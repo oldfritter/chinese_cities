@@ -12,8 +12,8 @@ import (
 )
 
 type City struct {
-	Id         string `yaml:"id" json:"id"`
-	ProvinceId string `yaml:"province_id" json:"province_id"`
+	Id         int    `yaml:"id" json:"id"`
+	ProvinceId int    `yaml:"province_id" json:"province_id"`
 	Name       string `yaml:"name" json:"name"`
 }
 
@@ -39,7 +39,7 @@ func InitCities() {
 	yaml.Unmarshal(content, &AllCities)
 }
 
-func FindCityById(id string) (*City, error) {
+func FindCityById(id int) (*City, error) {
 	if len(AllCities) == 0 {
 		InitCities()
 	}
@@ -51,7 +51,7 @@ func FindCityById(id string) (*City, error) {
 	return &City{}, fmt.Errorf("No city can be found.")
 }
 
-func FindCitiesByProvinceId(province_id string) *[]City {
+func FindCitiesByProvinceId(province_id int) *[]City {
 	if len(AllCities) == 0 {
 		InitCities()
 	}

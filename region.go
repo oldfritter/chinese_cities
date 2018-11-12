@@ -12,8 +12,8 @@ import (
 )
 
 type Region struct {
-	Id     string `yaml:"id" json:"id"`
-	CityId string `yaml:"city_id" json:"city_id"`
+	Id     int    `yaml:"id" json:"id"`
+	CityId int    `yaml:"city_id" json:"city_id"`
 	Name   string `yaml:"name" json:"name"`
 }
 
@@ -32,7 +32,7 @@ func InitRegions() {
 	yaml.Unmarshal(content, &AllRegions)
 }
 
-func FindRegionById(id string) (*Region, error) {
+func FindRegionById(id int) (*Region, error) {
 	if len(AllProvinces) == 0 {
 		InitProvinces()
 	}
@@ -71,7 +71,7 @@ func (region *Region) ProvinceName() string {
 	return (*province).Name
 }
 
-func FindCitiesByCityId(city_id string) *[]Region {
+func FindCitiesByCityId(city_id int) *[]Region {
 	if len(AllRegions) == 0 {
 		InitRegions()
 	}

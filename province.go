@@ -12,7 +12,7 @@ import (
 )
 
 type Province struct {
-	Id   string `yaml:"id" json:"id"`
+	Id   int    `yaml:"id" json:"id"`
 	Name string `yaml:"name" json:"name"`
 }
 
@@ -31,7 +31,7 @@ func InitProvinces() {
 	yaml.Unmarshal(content, &AllProvinces)
 }
 
-func FindProvinceById(id string) (*Province, error) {
+func FindProvinceById(id int) (*Province, error) {
 	if len(AllProvinces) == 0 {
 		InitProvinces()
 	}
